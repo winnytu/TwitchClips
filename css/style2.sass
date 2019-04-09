@@ -1,0 +1,122 @@
+@mixin FlexSetting($justify-content:center)
+	display: flex
+	justify-content: $justify-content
+	align-items: center
+
+@mixin BoxShadow($X:5px, $Y:5px, $Z:10px, $color:#000)
+	box-shadow: $X $Y $Z rgba($color,0.5)
+
+html,body
+	background-color: #565656
+h1 
+	display: block
+
+
+.title
+	color: #fff
+	+FlexSetting
+	padding: 25px
+	flex-direction: column
+	margin-top: 10px
+	letter-spacing: 3px
+
+	h1
+		font-size: 36px 
+	.Btn
+		display: block
+		margin: 10px
+
+	.Choose
+		&:checked
+			outline-color: #6815a8
+.Searcharea
+	+FlexSetting
+	flex-direction: row
+	background-color: #fff
+	padding: 5px
+	margin: 10px
+.fa-search
+	color: #ccc
+	padding: 3px
+
+.search
+	border: none
+	border-left: 2px solid #ccc
+	padding: 0px 5px
+	&:focus
+		outline: none
+
+
+.cardgroup
+	display: flex
+	justify-content: center
+	align-items: center
+	flex-wrap: wrap
+	padding: 0px 16px
+
+.card_wrapper
+	padding: 10px
+	max-width: 100%
+	+FlexSetting
+	background-color: none
+
+.card_inner
+	+BoxShadow
+	background-color: #fff
+	padding: 10px
+	margin: 10px
+	max-width: 100%
+	position: relative
+	text-align: center
+	+FlexSetting
+	flex-direction: column
+	&:hover
+		background-color: #fff6e0
+
+	.rank
+		+BoxShadow
+		position: absolute
+		top: -5%
+		left: -5%
+		background-color: #6815a8
+		color: #fff
+		padding: 10px 
+		font-size: 20px 
+
+	.broadcaster
+		font-size: 28px
+		padding: 10px
+		position: relative
+		&:after 
+			content: ""
+			background-color: rgba(#6815a8,0.5)
+			height: 1px
+			width: 200px
+			position: absolute
+			bottom: 0%
+			left: 50%
+			transform: translateX(-50%)
+
+	.Cliptitle
+		font-size: 16px
+		padding: 10px
+		max-width: 200px
+		white-space: nowrap
+		overflow: hidden
+		text-overflow: ellipsis
+		
+	.cover
+		width: 100%
+		margin: 10px 0px
+		cursor: pointer
+		&:hover
+			+BoxShadow(0px, 0px, 10px)
+
+	.fa-eye
+		margin-right: 5px
+		color: red
+	.wrap 
+		width: 100%
+		+FlexSetting(space-between)
+		flex-direction: row
+
