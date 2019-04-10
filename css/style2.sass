@@ -1,84 +1,138 @@
-@mixin FlexSetting($justify-content:center)
+// Color
+// color
+$DarkMainColor: #6815a8
+$LighMaintColor: #b19fc9
+$RelativeMainColor: #fff6e0
+$BackgroundColor: #565656
+
+// variables
+
+@mixin FlexSetting($justify-content:center, $flex-direction:row)
 	display: flex
 	justify-content: $justify-content
 	align-items: center
+	flex-direction: $flex-direction
 
 @mixin BoxShadow($X:5px, $Y:5px, $Z:10px, $color:#000)
 	box-shadow: $X $Y $Z rgba($color,0.5)
 
-html,body
-	background-color: #565656
-h1 
-	display: block
+%RadioStyle
+	content: ""
+	position: absolute
+	top: 0
+	left: 0
+	width: 20px
+	height: 20px
+	border-radius: 50px
+	background-color: $LighMaintColor
+	border: 4px solid $BackgroundColor
+	padding: 2px
 
+
+
+html,body
+	background-color: $BackgroundColor
+	font-family: Segoe UI, Microsoft JhengHei, Sans Francisco, PingFang
+
+footer 
+	+FlexSetting
+	background-color: #000
+	width: 100%
+	height: 100px
+	color: #fff
+	text-align: center
 
 .title
+	+FlexSetting(center, column)
 	color: #fff
-	+FlexSetting
 	padding: 25px
-	flex-direction: column
 	margin-top: 10px
 	letter-spacing: 3px
-
 	h1
-		font-size: 36px 
-	.Btn
-		display: block
-		margin: 10px
+		font-size: 48px
+	.line
+		width: 300px
+		height: 2px
+		background-color: $LighMaintColor
+		margin: 20px
 
-	.Choose
-		&:checked
-			outline-color: #6815a8
+
+.Select
+	+FlexSetting
+	padding: 10px
+	.SelectWeek, .SelectAll
+		+FlexSetting
+
+	input[type="radio"]
+		opacity: 0
+		width: 20px
+		height: 20px
+		z-index: -1
+		&:checked+label
+			&:after
+				@extend %RadioStyle
+				
+
+	label
+		width: 20px
+		height: 20px
+		border: 3px solid $LighMaintColor
+		border-radius: 50px
+		box-sizing: content-box
+		position: relative
+		margin-right: 10px 
+		&:hover
+			box-shadow: 0px 0px 10px rgba($LighMaintColor, 0.8)
+			&:after
+				@extend %RadioStyle
+
 .Searcharea
 	+FlexSetting
-	flex-direction: row
 	background-color: #fff
 	padding: 5px
 	margin: 10px
-.fa-search
-	color: #ccc
-	padding: 3px
+	.fa-search
+		color: #ccc
+		padding: 3px
 
-.search
-	border: none
-	border-left: 2px solid #ccc
-	padding: 0px 5px
-	&:focus
-		outline: none
+	.search
+		border: none
+		border-left: 2px solid #ccc
+		padding: 0px 5px
+		&:focus
+			outline: none
 
 
 .cardgroup
-	display: flex
-	justify-content: center
-	align-items: center
+	+FlexSetting
 	flex-wrap: wrap
 	padding: 0px 16px
 
 .card_wrapper
+	+FlexSetting
 	padding: 10px
 	max-width: 100%
-	+FlexSetting
 	background-color: none
 
 .card_inner
 	+BoxShadow
+	+FlexSetting
 	background-color: #fff
 	padding: 10px
 	margin: 10px
 	max-width: 100%
 	position: relative
 	text-align: center
-	+FlexSetting
 	flex-direction: column
 	&:hover
-		background-color: #fff6e0
+		background-color: $RelativeMainColor
 
 	.rank
 		+BoxShadow
 		position: absolute
 		top: -5%
 		left: -5%
-		background-color: #6815a8
+		background-color: $DarkMainColor
 		color: #fff
 		padding: 10px 
 		font-size: 20px 
@@ -89,7 +143,7 @@ h1
 		position: relative
 		&:after 
 			content: ""
-			background-color: rgba(#6815a8,0.5)
+			background-color: rgba($DarkMainColor,0.5)
 			height: 1px
 			width: 200px
 			position: absolute
@@ -117,6 +171,5 @@ h1
 		color: red
 	.wrap 
 		width: 100%
-		+FlexSetting(space-between)
-		flex-direction: row
+		+FlexSetting(space-between,row)
 

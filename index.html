@@ -2,7 +2,7 @@
 <html lang="zh">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>TwitchClipsRanking</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
@@ -14,17 +14,24 @@
 <body>
 	<div id="app">	
 		<div class="title">
-		<h1>Twitch剪輯精華</h1>
-		<form class="Btn">
-		<input class="Choose" type="radio" value="week" v-model="Show">
-		<label for="week">Weekly</label>
-		<input  class="Choose" type="radio" value="all" v-model="Show"> 
-		<label for="all">All Time</label>
+		<h1>Twitch剪輯排行榜</h1>
+		<div class="line"></div>
+		<form action="" class="Select">
+			<div class="SelectWeek">
+				<input type="radio" id="week" value="week" v-model="Show">
+				<label for="week"></label>
+				<span>Weekly</span>
+			</div>
+			<div class="SelectAll">
+				<input type="radio" id="all" value="all" v-model="Show">
+				<label for="all"></label>
+				<span>All time</span>
+			</div>
 		</form>
 		<div class="Searcharea">
 		<i class="fas fa-search"></i>
 		<input class="search" type="text" placeholder=" 搜尋實況主" v-model="Keywords"></div>
-		<h5 v-if="Keywords">以下為搜尋「{{Keywords}}」的結果</h4>
+		<h5 v-if="Keywords">以下為符合「{{Keywords}}」的搜尋結果</h4>
 		</div>
 		<div class="cardgroup">
 		<div class="card_wrapper col-12 col-sm-6 col-lg-4" v-for="(Allclip,allid) in Allclips" v-show="(Show === 'all')&&(Allclip.broadcaster.display_name.indexOf(Keywords)!=-1)">
@@ -60,6 +67,11 @@
 	</div>	
 	</div>
 </body>
+<footer>
+	Edits by Winny Tu
+	<br>
+	Email:winny3531@gmail.com
+</footer>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
