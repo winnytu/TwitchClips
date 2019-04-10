@@ -1,4 +1,7 @@
 ## 版本內容
+### v.1.1 upload date:04/10/2019
+- 純css美化radio樣式
+- 管理SASS變數
 ### v.1 upload date:04/10/2019
 - 串接Twitch API取得前50支觀看次數最高的剪輯影片(clips)
 - 可選擇查看當週排行/全部排行(weekly/all time)
