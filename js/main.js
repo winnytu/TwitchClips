@@ -34,8 +34,6 @@ var vm = new Vue({
 			.then(axios.spread((Allresponse, Weeklyresponse)=>{
 				this.Allclips= Allresponse.data.clips
 				this.Weeklyclips= Weeklyresponse.data.clips
-				console.log(this.Allclips)
-				console.log(this.Weeklyclips)
 			}))
 		},
 })

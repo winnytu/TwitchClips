@@ -13,7 +13,7 @@
 </head>
 <body>
 	<div class="menu">
-		<a href="./search.html">Search Specific Streamer</a>
+		<a href="./index.html">Search All</a>
 	</div>
 	<div id="app">	
 		<div class="title">
@@ -33,42 +33,43 @@
 		</form>
 		<div class="Searcharea">
 		<i class="fas fa-search"></i>
-		<input class="search" type="text" placeholder=" 搜尋實況主" v-model="Keywords"></div>
-		<h5 v-if="Keywords">以下為符合「{{Keywords}}」的搜尋結果</h4>
+		<input class="search" type="text" placeholder=" 搜尋實況主" v-model="Streamer" @keyup.enter="searchresult"></div>
+		<h5 v-if="StreamerWeekClips">以下為符合「{{Streamer}}」的搜尋結果</h4>
 		</div>
 		<div class="cardgroup">
-		<div class="card_wrapper col-12 col-sm-6 col-lg-4" v-for="(Allclip,allid) in Allclips" v-show="(Show === 'all')&&(Allclip.broadcaster.display_name.indexOf(Keywords)!=-1)">
+		<div class="card_wrapper col-12 col-sm-6 col-lg-4" v-for="(StreamerWeeklyClip,Sweekid) in StreamerWeeklyClips" v-show="Show === 'week'">
 			<div class="card_inner">
-			<div class="rank">
-				No.{{allid+1}}
+				<div class="rank">
+					No.{{Sweekid+1}}
+				</div>
+				<div class="Cliptitle">{{StreamerWeeklyClip.title}}</div>
+				<a :href="StreamerWeeklyClip.embed_url" data-fancybox data-options='{"type" : "iframe", "iframe" : {"preload" : false, "css" : {"width" : "800px"}}}' >
+					<img class="cover" :src="StreamerWeeklyClip.thumbnails.medium" alt=""></a>
+				<div class="wrap"> 
+					<div class="time">{{StreamerWeeklyClip.created_at.slice(0,10)}}</div>
+					<div class="view"><i class="fas fa-eye"></i>{{StreamerWeeklyClip.views}}</div>
+				</div>
 			</div>
-			<div class="broadcaster">{{Allclip.broadcaster.display_name}}</div>
-			<div class="Cliptitle">{{Allclip.title}}</div>
-			<a :href="Allclip.embed_url" data-fancybox data-options='{"type" : "iframe", "iframe" : {"preload" : false, "css" : {"width" : "800px"}}}'>
-			<img class="cover" :src="Allclip.thumbnails.medium" alt=""></a>
-			<div class="wrap"> 
-				<div class="time">{{Allclip.created_at.slice(0,10)}}</div>
-				<div class="view"><i class="fas fa-eye"></i>{{Allclip.views}}</div>
 			</div>
 		</div>
-		</div>
-		<div class="card_wrapper ol-12 col-sm-6 col-lg-4" v-for="(Weeklyclip,Weekid) in Weeklyclips" v-show="(Show === 'week')&&(Weeklyclip.broadcaster.display_name.indexOf(Keywords)!=-1)">
+		<div class="cardgroup">
+		<div class="card_wrapper col-12 col-sm-6 col-lg-4" v-for="(StreamerAllClip,Sallid) in StreamerAllclips" v-show="Show === 'all'">
 			<div class="card_inner">
-			<div class="rank">
-				No.{{Weekid+1}}
-			</div>
-			<div class="broadcaster">{{Weeklyclip.broadcaster.display_name}}</div>
-			<div class="Cliptitle">{{Weeklyclip.title}}</div>
-			<a :href="Weeklyclip.embed_url" data-fancybox data-options='{"type" : "iframe", "iframe" : {"preload" : false, "css" : {"width" : "800px"}}}' >
-			<img class="cover" :src="Weeklyclip.thumbnails.medium" alt=""></a>
-			<div class="wrap"> 
-				<div class="time">{{Weeklyclip.created_at.slice(0,10)}}</div>
-				<div class="view"><i class="fas fa-eye"></i>{{Weeklyclip.views}}</div>
+				<div class="rank">
+					No.{{Sallid+1}}
+				</div>
+				<div class="Cliptitle">{{StreamerAllClip.title}}</div>
+				<a :href="StreamerAllClip.embed_url" data-fancybox data-options='{"type" : "iframe", "iframe" : {"preload" : false, "css" : {"width" : "800px"}}}' >
+					<img class="cover" :src="StreamerAllClip.thumbnails.medium" alt=""></a>
+				<div class="wrap"> 
+					<div class="time">{{StreamerAllClip.created_at.slice(0,10)}}</div>
+					<div class="view"><i class="fas fa-eye"></i>{{StreamerAllClip.views}}</div>
+				</div>
 			</div>
 		</div>
-	</div>
 	</div>	
 	</div>
+</div>
 </body>
 <footer>
 	Edits by Winny Tu
@@ -78,7 +79,7 @@
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/develop.js"></script>
 <script type="text/javascript" src="js/jquery.fancybox.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
