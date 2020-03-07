@@ -13,31 +13,35 @@
 </head>
 <body>
 	<div class="menu">
-		<a href="./search.html">Search Specific Streamer</a>
+		<span>切換</span>個別實況主剪輯排行</a>
 	</div>
-	<div id="app">	
+	<div id="app">
+		<div class="top-img">
+			<img src="./asset/bg.jpg" alt="">
+		</div>	
 		<div class="title">
-		<h1>Twitch剪輯排行榜</h1>
-		<div class="line"></div>
-		<form action="" class="Select">
-			<div class="SelectWeek">
-				<input type="radio" id="week" value="week" v-model="Show">
-				<label for="week"></label>
-				<span>Weekly</span>
-			</div>
-			<div class="SelectAll">
-				<input type="radio" id="all" value="all" v-model="Show">
-				<label for="all"></label>
-				<span>All time</span>
-			</div>
-		</form>
-		<div class="Searcharea">
-		<i class="fas fa-search"></i>
-		<input class="search" type="text" placeholder=" 搜尋實況主" v-model="Keywords"></div>
-		<h5 v-if="Keywords">以下為符合「{{Keywords}}」的搜尋結果</h4>
+			<img class="twitch-logo" src="./asset/twitch.png" alt="">
+			<h1>剪輯全站排行榜</h1>
+			<div class="line"></div>
+			<form action="" class="Select">
+				<div class="SelectWeek">
+					<input type="radio" id="week" value="week" v-model="Show">
+					<label for="week"></label>
+					<span>Weekly</span>
+				</div>
+				<div class="SelectAll">
+					<input type="radio" id="all" value="all" v-model="Show">
+					<label for="all"></label>
+					<span>All time</span>
+				</div>
+			</form>
+			<div class="Searcharea">
+			<i class="fas fa-search"></i>
+			<input class="search" type="text" placeholder=" 輸人實況主關鍵字" v-model="Keywords"></div>
+			<h5 v-if="Keywords">以下為符合「{{Keywords}}」的搜尋結果</h4>
 		</div>
 		<div class="cardgroup">
-		<div class="card_wrapper col-12 col-sm-6 col-lg-4" v-for="(Allclip,allid) in Allclips" v-show="(Show === 'all')&&(Allclip.broadcaster.display_name.indexOf(Keywords)!=-1)">
+		<div class="card_wrapper col-12 col-sm-6 col-lg-3" v-for="(Allclip,allid) in Allclips" v-show="(Show === 'all')&&(Allclip.broadcaster.display_name.indexOf(Keywords)!=-1)">
 			<div class="card_inner">
 			<div class="rank">
 				No.{{allid+1}}
@@ -52,7 +56,7 @@
 			</div>
 		</div>
 		</div>
-		<div class="card_wrapper ol-12 col-sm-6 col-lg-4" v-for="(Weeklyclip,Weekid) in Weeklyclips" v-show="(Show === 'week')&&(Weeklyclip.broadcaster.display_name.indexOf(Keywords)!=-1)">
+		<div class="card_wrapper ol-12 col-sm-6 col-lg-3" v-for="(Weeklyclip,Weekid) in Weeklyclips" v-show="(Show === 'week')&&(Weeklyclip.broadcaster.display_name.indexOf(Keywords)!=-1)">
 			<div class="card_inner">
 			<div class="rank">
 				No.{{Weekid+1}}
@@ -81,5 +85,10 @@
 <script type="text/javascript" src="js/main.js"></script>
 <script type="text/javascript" src="js/jquery.fancybox.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
+<script>
+var link = document.querySelector('.menu')
+link.addEventListener('click', function(){
+	window.location.href = window.location.origin + '/search.html'
+})
+</script>
 </html>

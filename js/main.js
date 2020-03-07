@@ -9,7 +9,7 @@ var vm = new Vue({
 
 	},
 
-	created(){
+	mounted(){
 		let APIurl1="https://api.twitch.tv/kraken/clips/top?language=zh-tw&limit=50&period=all"
 		let APIurl2="https://api.twitch.tv/kraken/clips/top?language=zh-tw&limit=50"
 	

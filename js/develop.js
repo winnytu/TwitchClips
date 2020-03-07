@@ -5,7 +5,8 @@ var vm = new Vue ({
 		Streamer:[],
 		StreamerWeeklyClips:[],
 		StreamerAllclips:[],
-		Show: 'week'
+		Show: 'week',
+		loadFinish: false
 
 	},
 
@@ -19,13 +20,13 @@ var vm = new Vue ({
 
 	searchresult:function(){
 		let StreamerID = this.Streamer
-		let StreamerAPI = ['https://api.twitch.tv/kraken/clips/top?limit=50&channel='+StreamerID]
-		let StreamerAPI2 = ['https://api.twitch.tv/kraken/clips/top?limit=50&period=all&channel='+StreamerID]
+		let StreamerAPI = `https://api.twitch.tv/kraken/clips/top?limit=50&channel=${StreamerID}`
+		let StreamerAPI2 = `https://api.twitch.tv/kraken/clips/top?limit=50&period=all&channel=${StreamerID}`
 
 		function GetStreamerWeekly(){
 		return axios({
 		method:'get',
-        url:StreamerAPI,
+		url:StreamerAPI,
         headers:{'Client-ID':'991fj2s7nziprtg9a6hujhcmzryvfo','Accept':'application/vnd.twitchtv.v5+json' 
   		}})
 		}
@@ -43,7 +44,7 @@ var vm = new Vue ({
 			.then(axios.spread((Weeklyresponse, Allresponse)=>{
 				this.StreamerWeeklyClips=Weeklyresponse.data.clips
 				this.StreamerAllclips= Allresponse.data.clips
-
+				this.loadFinish= true
 			}))
 		},
 	}

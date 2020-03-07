@@ -1,7 +1,8 @@
 // Color
 // color
 $DarkMainColor: #6815a8
-$LighMaintColor: #b19fc9
+$LighMaintColor: #e5c4ff
+$HoverMainColor: #f5e9ff
 $RelativeMainColor: #fff6e0
 $BackgroundColor: #565656
 
@@ -41,9 +42,36 @@ footer
 	height: 100px
 	color: #fff
 	text-align: center
+#app 
+	position: relative
+	background-color: #162334
 .menu
 	+FlexSetting
 	font-size: 20px
+	position: fixed
+	right: -220px
+	top: 30%
+	z-index: 5
+	color: $LighMaintColor
+	padding: 10px 30px 10px 10px
+	transition: 0.5s 
+	cursor: pointer
+	background-color: $DarkMainColor
+	border: 3px solid rgba($DarkMainColor,0.5)
+	opacity: 0.7
+	span 
+		font-size: 24px
+		margin: 0 20px 0 10px
+	&:hover 
+		right: -10px
+		opacity: 1
+.top-img 
+	width: 100%
+	height: 600px
+	overflow: hidden
+	img 
+		width: 100%
+		
 
 .title
 	+FlexSetting(center, column)
@@ -51,8 +79,16 @@ footer
 	padding: 25px
 	margin-top: 10px
 	letter-spacing: 3px
+	position: absolute
+	top: 100px
+	left: 50%
+	transform: translateX(-50%)
+	font-weight: 900
+	.twitch-logo 
+		width: 60%
+		margin-bottom: 20px
 	h1
-		font-size: 48px
+		font-size: 2rem
 	.line
 		width: 300px
 		height: 2px
@@ -84,6 +120,7 @@ footer
 		box-sizing: content-box
 		position: relative
 		margin-right: 10px 
+		cursor: pointer
 		&:hover
 			box-shadow: 0px 0px 10px rgba($LighMaintColor, 0.8)
 			&:after
@@ -111,6 +148,12 @@ footer
 	flex-wrap: wrap
 	padding: 0px 16px
 
+.no-data 
+	width: 100%
+	height: 100px
+	text-align: center
+	font-size: 40px
+	color: #fff
 .card_wrapper
 	+FlexSetting
 	padding: 10px
@@ -128,7 +171,7 @@ footer
 	text-align: center
 	flex-direction: column
 	&:hover
-		background-color: $RelativeMainColor
+		background-color: $HoverMainColor
 
 	.rank
 		+BoxShadow
